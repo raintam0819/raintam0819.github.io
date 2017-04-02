@@ -1,0 +1,58 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.f_l {
+  float: left;
+}
+
+.f_r {
+  float: right;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+input {
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+.b_t {
+  border-top: 1px solid gray;
+}
+
+.b_l {
+  border-left: 1px solid gray;
+}
+
+.b_r {
+  border-right: 1px solid gray;
+}
+
+.b_b {
+  border-bottom: 1px solid gray;
+}

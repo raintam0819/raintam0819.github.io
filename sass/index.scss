@@ -1,0 +1,294 @@
+// 先导入 normalize.scss
+@import'normalize.scss';
+// 再导入 base.scss
+
+/* 导入自己的 base.css */
+
+@import'base.scss';
+// 定义变量
+$jdRed:rgb(201, 21, 35);
+// 设置整体的背景色
+body {
+    background-color: #f5f5f5;
+
+    // 设置 最小的 宽度 即可 最起码 也是 这么小 不能 再小了 但是 可以放大
+    min-width: 320px;
+}
+
+// header标签
+header {
+    height: 40px;
+    background-color: $jdRed;
+    // 使用 固定定位
+    position: fixed;
+    z-index: 998;
+    // 左右往内部压缩
+    padding-left: 70px;
+    padding-right: 50px;
+    // 设置宽度即可
+    width: 100%;
+    a {
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        top: 11px;
+        // logo的背景图
+        &.logo {
+            left: 5px;
+            background-image: url('../images/sprites.png');
+            background-repeat: no-repeat;
+            background-size: 200px 200px;
+            background-position: 0 -103px;
+            width: 60px;
+            height: 36px;
+            top:2px;
+        }
+        &.login {
+            right: 10px;
+        }
+    }
+    // input标签
+    input {
+        width: 100%;
+        height: 30px;
+        margin-top: 5px;
+        border-radius: 30px;
+        padding-left: 50px;
+    }
+
+    .bigger-glass{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url('../images/sprites.png');
+        background-repeat: no-repeat;
+        background-position: -60px -109px;
+        background-size: 200px 200px;
+        top:10px;
+        left:80px;
+    }
+}
+
+// 设置轮播图的尺寸
+.banner {
+    // 高度 不应该写死 让图片将 父盒子 撑大即可
+    // height: 182px;
+    overflow: hidden;
+    position: relative;
+    // 轮播图的ul
+    .banner_imgs {
+        // 10倍 父元素的宽度 为了 宽度方向能够放下10张轮播图
+        width: 1000%;
+        // 默认让他 往左 移动 一倍的屏幕宽度 由于自己是 10倍的屏幕宽度 所以这里移动 10%即可
+        transform: translateX(-10%);
+        li {
+            // 就刚好跟 banner的宽度一致了
+            width: 10%;
+            a {
+                display: block;
+                width: 100%;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    // 索引的 ul标签
+    .banner_index {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        // 如果直接写百分比 那么 参照的尺寸是  自己的
+        transform: translateX(-50%);
+        li {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid white;
+            margin-right: 5px;
+            // 交集选择器
+            &.current {
+                background-color: white;
+            }
+        }
+    }
+}
+
+// 导航区域
+nav {
+    background-color: white;
+    ul {
+        display: flex;
+        // 开启换行
+        flex-wrap: wrap;
+        li {
+            width: 25%;
+            a {
+                display: block;
+                width: 100%;
+                text-decoration: none;
+                img {
+                    width: 50%;
+                    display: block;
+                    margin: 10px auto 0;
+                }
+                p {
+                    text-align: center;
+                    color: gray;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+// 主体内容区域
+.content {
+    padding: 0 5px;
+    section {
+        // 默认 最小的 高度
+        // 最起码 多高 如果内容 把他 撑大了可以 变大
+        min-height: 100px;
+        margin-top: 10px;
+        background-color: white;
+        // 添加给 top
+        .top {
+            // 统一添加 底部边框
+            border-bottom: 1px solid gray;
+            height: 32px;
+        }
+    }
+    // 秒杀区域
+    section.second-kill{
+        .top{
+            border-bottom: none;
+            display: flex;
+            justify-content: space-between;
+            // 左边区域
+            .left-box{
+                display: flex;
+                // 副轴居中
+                align-items: center;
+                span{
+                    margin:0 3px;
+                }
+                .clock{
+                    background-image: url('../images/seckill-icon.png');
+                    background-repeat: no-repeat;
+                    background-size: 15px 20px;
+                    width: 15px;
+                    height: 20px;
+                }
+               .kill{
+                   color:$jdRed;
+               } 
+               ul{
+                   display: flex;
+                //    background-color: black;
+                li{
+                    width: 15px;
+                    height: 15px;
+                    background-color: gray;
+                    color:white;
+                    margin:0 2px;
+                    font-size:12px;
+                    text-align: center;
+                    line-height: 15px;
+                }
+                li:nth-child(3n){
+                    background-color: transparent;
+                    color:black;
+                    width:4px;
+                }
+               }
+            }
+            // 右边区域
+            .right-box{
+                display: flex;
+                align-items: center;
+                a{
+                    color:gray;
+                    margin-right: 10px;
+                    font-size:14px;
+                }
+            }
+        }
+        // 底部区域
+        .bottom{
+            ul{
+                display: flex;
+                padding-top: 10px;
+                li{
+                    flex:1;
+                    a{
+                        display: block;
+                        width: 100%;
+                        img{
+                            display: block;
+                            width: 60%;
+                            margin: 0 auto;
+                        }
+                    }
+                    p{
+                        text-align: center;
+                        font-size:12px;
+                        margin:8px 0;
+                        // 第一个p标签
+                        &:first-of-type{
+                            color:$jdRed;
+                        }
+                        // 最后一个p标签
+                        &:last-of-type{
+                            text-decoration: line-through;
+                        }
+                    }
+                }
+
+                // 找到 中间的li标签 的a标签
+                li:nth-child(2){
+                    a{
+                        border-left: 1px solid #ccc;
+                        border-right: 1px solid #ccc;
+                    }
+                }
+            }
+        }
+    }
+
+    // 超市区域
+    section{
+        // 超市区域 顶部标题
+        .top{
+            h5{
+                line-height:32px; 
+                font-weight: 400;
+                margin-left: 10px; 
+                position: relative;
+                &::before{
+                    content:'';
+                    position: absolute;
+                    width: 4px;
+                    height: 12px;
+                    top:10px;
+                    left:-6px;
+                    // 调用颜色函数 让颜色 变浅一些
+                    // rgba 参数1 颜色 参数2 多浅
+                    background-color: rgba($jdRed,.7);
+                }
+            }
+        }
+
+        // 底部区域
+        .bottom{
+            a{
+                display: block;
+                width: 50%;
+                img{
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+    }
+}

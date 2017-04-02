@@ -1,0 +1,61 @@
+// box-sizing
+*,::before,::after{
+    // 添加padding 的时候 不会改变元素的大小 往内部进行收缩
+    box-sizing: border-box;
+}
+
+ul,ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// 快速 浮动
+.f_l{
+    float: left;
+}
+.f_r{
+    float: right;
+}
+.clearfix::before,
+.clearfix::after{
+    content: '';
+    display: block;
+    line-height: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix{
+    zoom:1;
+}
+
+// 清除 input标签的 默认样式
+input{
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+// 清除 a标签 默认的 按压 高亮效果
+a{
+    // 按压的效果
+    -webkit-tap-highlight-color: transparent; 
+
+    // 下划线
+    text-decoration: none;
+}
+
+// 通用的 边框类
+.b_t{
+    border-top: 1px solid gray;
+}
+.b_l{
+    border-left: 1px solid gray;
+}
+.b_r{
+    border-right: 1px solid gray;
+}
+.b_b{
+    border-bottom: 1px solid gray;
+}
